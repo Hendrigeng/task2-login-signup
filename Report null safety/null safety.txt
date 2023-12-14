@@ -1,0 +1,103 @@
+Report of null safety:
+
+Null safety in Dart prevents null reference errors at runtime.
+Nullable and non-nullable types improve code reliability and safety.
+Null-aware operators (?., ??) simplify handling of nullable values.
+Late initialization and late keyword allow deferring variable initialization.
+Non-nullability by default reduces the risk of null-related bugs.
+Sound null safety provides compile-time guarantees against null errors.
+Type promotion narrows the type of a nullable variable after null checks.
+Null safety seamlessly integrates with collections, generics, and operator overloading.
+Null safety enhances testing practices and error handling.
+Community support and resources aid in adopting and leveraging null safety effectively.
+
+
+Nullable Variable:
+
+String? name = 'John';
+print(name); // Output: John
+name = null;
+print(name); // Output: null
+
+
+Null-aware Access (?.) Operator:
+
+String? name = 'Alice';
+int length = name?.length ?? 0;
+print(length); // Output: 5
+name = null;
+length = name?.length ?? 0;
+print(length); // Output: 0
+
+
+
+Late Initialization:
+
+late String message;
+message = 'Hello, Dart!';
+print(message); // Output: Hello, Dart!
+
+
+
+Non-Nullable Function Return Type:
+
+String greet(String name) {
+  return 'Hello, $name!';
+}
+
+
+
+String result = greet('Alice');
+print(result); // Output: Hello, Alice!
+Required Parameters:
+
+void printNumber({required int number}) {
+  print(number);
+}
+
+printNumber(number: 42); // Output: 42
+
+
+
+Type Promotion:
+String? name = 'Bob';
+if (name != null) {
+  print(name.toUpperCase()); // Output: BOB
+}
+Null Coalescing Operator (??):
+
+String? name;
+String fullName = name ?? 'John Doe';
+print(fullName); // Output: John Doe
+
+
+
+
+Non-Nullable List:
+
+List<String> fruits = ['Apple', 'Banana', 'Orange'];
+fruits.add('Mango');
+print(fruits); // Output: [Apple, Banana, Orange, Mango]
+
+
+
+
+Asserting Non-Nullability (! operator):
+
+String? name = 'Alice';
+print(name!.toUpperCase()); // Output: ALICE
+
+
+
+
+Late Final Field:
+class Person {
+  late final String name;
+
+  Person() {
+    name = 'John Doe';
+  }
+}
+
+Person person = Person();
+print(person.name); // Output: John Doe
