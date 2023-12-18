@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:task2login/homepage.dart';
 import 'package:task2login/signupage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Login extends StatefulWidget {
     Login({super.key});
 
   @override
+
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+
   @override
+
   Widget build(BuildContext context) {
+
     return Scaffold(    backgroundColor: Colors.white,
 
       body: Container( height: MediaQuery.of(context).size.height,
@@ -33,16 +39,19 @@ class _LoginState extends State<Login> {
 
               child: TextField(
 
+
+
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
-                    hintText: 'Enter valid email '),
+                    hintText: 'Enter valid email'),
               ),
             ),
             Container(
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 15, bottom: 0),
               child: TextField(
+
 
                 obscureText: true,
                 decoration: InputDecoration(
@@ -67,7 +76,13 @@ class _LoginState extends State<Login> {
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
              child:TextButton(
-                onPressed: () {
+                onPressed: () async{
+
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+
+
                  Navigator.push(
                      context, MaterialPageRoute(builder: (_) => Homepage()));
                 },
