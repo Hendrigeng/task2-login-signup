@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task2login/Loginpage.dart';
+import 'package:task2login/pages/Loginpage.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});

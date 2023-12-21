@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:task2login/homepage.dart';
-import 'package:task2login/Loginpage.dart';
+import 'package:task2login/pages/homepage.dart';
+import 'package:task2login/pages/Loginpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Splashscreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+   Timer(Duration(seconds: 5), () {
       _navigateUser();
 
     });
