@@ -38,8 +38,11 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/logo.jpg"), fit: BoxFit.cover)),
         height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(60),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -49,16 +52,26 @@ class _LoginState extends State<Login> {
                 child: Container(
                     width: 300,
                     height: 150,
-                    child: Image.asset("images/logo.png")),
+                    child: Image.asset("images/Logo2.png")),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            Text("Sign In",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold)),
+
+
+
             TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 controller: emailController,
                 decoration: const InputDecoration(
-                  label: Text('Email'),
-                  suffixIcon: Icon(Icons.email),
-
+                  label: Text('Email', style: TextStyle(color: Colors.white)),
+                  prefixIcon: Icon(Icons.email, color: Colors.white),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -77,7 +90,9 @@ class _LoginState extends State<Login> {
                 obscureText: obsecureText,
                 controller: passwordController,
                 decoration: InputDecoration(
-                    label: const Text('Password'),
+                    label: const Text('Password',
+                        style: TextStyle(color: Colors.white)),
+                    prefixIcon: Icon(Icons.lock, color: Colors.white),
                     suffixIcon: InkWell(
                       onTap: () => toggleObsecure(),
                       child: Icon(obsecureText
@@ -97,21 +112,30 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 15,
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => Signup()));
-              },
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
+            Container(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => Signup()));
+                },
+                child: Text(
+                  'Forgot Password?',
+                  style: TextStyle(
+                    color: Colors.cyan[600],
+                    fontSize: 15,
+                    decoration: TextDecoration.none,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
               ),
             ),
             Container(
               height: 50,
-              width: 200,
+              width: 600,
               decoration: BoxDecoration(
-                  color: Colors.orange, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () async {
                   if (fromKey.currentState?.validate() ?? false) {
@@ -128,15 +152,23 @@ class _LoginState extends State<Login> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
             TextButton(
               onPressed: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => Signup()));
               },
-              child: Text('Donot have an account? Register',style: TextStyle(color: Colors.blue, fontSize:12),),
-            )
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Don\'t have an account? ',
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                  Text(' Register',
+                      style: TextStyle(color: Colors.orange, fontSize: 15))
+                ],
+              ),
+            ),
           ],
         ),
       ),
