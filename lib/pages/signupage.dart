@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task2login/Loginpage.dart';
-import 'package:task2login/homepage.dart';
+import 'package:task2login/pages/Loginpage.dart';
+import 'package:task2login/pages/homepage.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
