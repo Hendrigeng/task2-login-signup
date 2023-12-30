@@ -29,7 +29,7 @@ class Homepage extends StatelessWidget {
         child: Container(
           width: 400,
           height: 200,
-          child: Image.asset("images/logo.png"),
+          child: Image.asset("images/Logo2.png"),
         ),
       ),
       Container(

@@ -15,10 +15,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
-
   late GlobalKey<FormState> fromKey;
-
   bool obsecureText = true;
+
 
   @override
   void initState() {
@@ -66,7 +65,7 @@ class _LoginState extends State<Login> {
 
 
 
-            TextFormField(
+            TextFormField(style:TextStyle(color: Colors.white),
                 keyboardType: TextInputType.emailAddress,
                 controller: emailController,
                 decoration: const InputDecoration(
@@ -86,7 +85,7 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 15,
             ),
-            TextFormField(
+            TextFormField(style:TextStyle(color: Colors.white),
                 obscureText: obsecureText,
                 controller: passwordController,
                 decoration: InputDecoration(
@@ -137,13 +136,12 @@ class _LoginState extends State<Login> {
                   color: Colors.orange,
                   borderRadius: BorderRadius.circular(20)),
               child: TextButton(
-                onPressed: () async {
-                  if (fromKey.currentState?.validate() ?? false) {
-                    await PrefrencesService.prefs?.setBool('isLogin', true);
+                onPressed: (){
+
 
                     Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (_) => Homepage()));
-                  }
+
                 },
                 child: Text(
                   'Sign In',

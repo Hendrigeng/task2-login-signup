@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:task2login/pages/homepage.dart';
 import 'package:task2login/pages/Loginpage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../services/preferences.services.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -13,33 +13,28 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
-  bool isLoggedIn = false;
-  static const String keylogin="login";
+
   @override
   void initState() {
+    initSplash();
     super.initState();
-   Timer(Duration(seconds: 5), () {
-      _navigateUser();
-
-    });
   }
+  void initSplash() async {
 
-  void _navigateUser() async {
-     SharedPreferences prefs = await SharedPreferences.getInstance();
-     isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+    await Future.delayed(const Duration(seconds: 3));
 
-   if(isLoggedIn!=null){
-    if(isLoggedIn){
-
-      Navigator.push(
+    if ( PrefrencesService.checkUser()) {
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => Homepage()));
-    }else{
-
-      Navigator.push(
+      // go to home page
+    } else {
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => Login()));
-
-    }}
+      // go to login page
+    }
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
