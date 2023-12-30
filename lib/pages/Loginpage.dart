@@ -18,7 +18,6 @@ class _LoginState extends State<Login> {
   late GlobalKey<FormState> fromKey;
   bool obsecureText = true;
 
-
   @override
   void initState() {
     emailController = TextEditingController();
@@ -62,10 +61,8 @@ class _LoginState extends State<Login> {
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold)),
-
-
-
-            TextFormField(style:TextStyle(color: Colors.white),
+            TextFormField(
+                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.emailAddress,
                 controller: emailController,
                 decoration: const InputDecoration(
@@ -85,7 +82,8 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 15,
             ),
-            TextFormField(style:TextStyle(color: Colors.white),
+            TextFormField(
+                style: TextStyle(color: Colors.white),
                 obscureText: obsecureText,
                 controller: passwordController,
                 decoration: InputDecoration(
@@ -136,12 +134,9 @@ class _LoginState extends State<Login> {
                   color: Colors.orange,
                   borderRadius: BorderRadius.circular(20)),
               child: TextButton(
-                onPressed: (){
-
-
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (_) => Homepage()));
-
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (_) => Homepage()));
                 },
                 child: Text(
                   'Sign In',

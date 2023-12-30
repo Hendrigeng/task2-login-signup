@@ -11,101 +11,115 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  bool obsecureText = true;
+
   @override
+  void toggleObsecure() {
+    obsecureText = !obsecureText;
+    setState(() {});
+  }
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body:
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          height: MediaQuery.of(context).size.height - 50,
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Column(
-                children: [
-                  const SizedBox(height: 60.0),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/logo.jpg"), fit: BoxFit.cover)),
+        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.all(30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(top: 60.0),
+                  child: Center(
+                    child: Container(
+                        width: 300,
+                        height: 150,
+                        child: Image.asset("images/Logo2.png")),
+                  ),
+                ),
+                const Text(
+                  "Register",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                TextField(
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                        label: const Text('Full Name',
+                            style: TextStyle(color: Colors.white)),
+                        prefixIcon: Icon(Icons.person, color: Colors.white),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18),borderSide: BorderSide(color: Colors.white)
+                        ))),
+                const SizedBox(height: 5),
+                TextField(
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                        label: const Text('Email Address',
+                            style: TextStyle(color: Colors.white)),
+                        prefixIcon: Icon(Icons.mail, color: Colors.white),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18), borderSide: BorderSide(color: Colors.white)
+                        ))),
+                const SizedBox(height: 5),
+                TextField(
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                        label: const Text('Password',
+                            style: TextStyle(color: Colors.white)),
+                        prefixIcon: Icon(Icons.lock, color: Colors.white),
 
-                  const Text(
-                    "Sign up",
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "Create your account",
-                    style: TextStyle(fontSize: 15, color: Colors.grey[700]),
-                  )
+
+                       focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: BorderSide(color: Colors.white,width: 2)))),
+                const SizedBox(height: 50),
+              ],
+            ),
+            Container(
+              width: 300,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(20)),
+              child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => Homepage()));
+                  },
+                  child: Text(
+                    "Register",
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  )),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => Login()));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Already registered  ',
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                  Text('Sign in.',
+                      style: TextStyle(color: Colors.orange, fontSize: 15))
                 ],
               ),
-              Column(
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                        hintText: "Username",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),))
-
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  TextField(
-                    decoration: InputDecoration(
-                        hintText: "Email",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),))
-
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18),))
-
-
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: "Confirm Password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18),))
-
-                  ),
-                ],
-              ),
-              Container(
-                  padding: const EdgeInsets.only(top: 3, left: 3),
-
-                  child:TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (_) => Homepage()));
-                      },
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(color: Colors.black
-                            , fontSize: 25),
-                      )),
-              ),
-
-
-            ],
-          ),
+            ),
+          ],
         ),
-
-
+      ),
     );
   }
 }
