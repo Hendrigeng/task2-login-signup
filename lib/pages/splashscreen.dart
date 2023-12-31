@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:task2login/pages/homepage.dart';
 import 'package:task2login/pages/Loginpage.dart';
-
+import 'package:get_it/get_it.dart';
 import '../services/preferences.services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -23,7 +24,8 @@ class _SplashscreenState extends State<Splashscreen> {
 
     await Future.delayed(const Duration(seconds: 3));
 
-    if ( PrefrencesService.checkUser()) {
+    //if ( PrefrencesService.checkUser()) {
+    if (GetIt.I.get<SharedPreferences>().getBool('isLogin') ?? false) {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => Homepage()));
       // go to home page

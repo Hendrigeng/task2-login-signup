@@ -4,6 +4,7 @@ import 'package:task2login/pages/homepage.dart';
 import 'package:task2login/pages/signupage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task2login/services/preferences.services.dart';
+import 'package:get_it/get_it.dart';
 
 class Login extends StatefulWidget {
   Login({super.key});
